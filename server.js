@@ -32,13 +32,13 @@ app.use(session({
 // const authRoute = require('./routes/auth');
 // const orderRoute = require('./routes/order');
 const itemRoute = require('./routes/item');
-// const ingredientRoute = require('./routes/ingredient');
+const ingredientRoute = require('./routes/ingredient');
 
 // Mounting Routes
 // app.use('/', authRoute);
 // app.use('/', orderRoute);
 app.use('/', itemRoute);
-// app.use('/', ingredientRoute)
+app.use('/', ingredientRoute)
 
 
 // Database
