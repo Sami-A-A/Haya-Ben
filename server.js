@@ -1,18 +1,18 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+let session = require('express-session');
 
 // env
 require ("dotenv").config()
 const port = process.env.PORT
 
-// Secret
-app.use(session())
+// Session
 app.use(session({
     secret: process.env.SECRET,
     saveUninitialized: true,
     resave: false,
-    cookie: {maxAge: 900000}
+    cookie: {maxAge: 1209600}
 }))
 
 
@@ -29,15 +29,16 @@ app.use(session({
 
 
 // Import Routes
-
-
-
-
+// const authRoute = require('./routes/auth');
+// const orderRoute = require('./routes/order');
+const itemRoute = require('./routes/item');
+// const ingredientRoute = require('./routes/ingredient');
 
 // Mounting Routes
-
-
-
+// app.use('/', authRoute);
+// app.use('/', orderRoute);
+app.use('/', itemRoute);
+// app.use('/', ingredientRoute)
 
 
 // Database
