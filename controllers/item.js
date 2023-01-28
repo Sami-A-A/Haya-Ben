@@ -19,7 +19,7 @@ exports.bento_create_post = (req,res) => {
 exports.item_index_get = (req,res) => {
     res.json({"message": "item_create_get works"})
 }
-exports.item_detail_get = (req,res) => {
+exports.item_details_get = (req,res) => {
     res.json({"message": "item_create_get works"})
 }
 

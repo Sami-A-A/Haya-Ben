@@ -20,7 +20,7 @@ router.post("/custom_bento/add", itemCtrl.bento_create_post);
 
 
 router.get("/menu", itemCtrl.item_index_get);
-router.get("/menu/item", itemCtrl.item_detail_get);
+router.get("/menu/item_details", itemCtrl.item_details_get);
 
 router.get("/menu/edit", itemCtrl.item_edit_get);
 router.put("/menu/create", itemCtrl.item_update_put);

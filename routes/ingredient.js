@@ -11,7 +11,7 @@ const ingredientCtrl = require('../controllers/ingredient')
 router.post("/ingredient/create", ingredientCtrl.ingr_create_post)
 
 router.get("/ingredient/index", ingredientCtrl.ingr_index_get)
-router.get("/ingredient/detail", ingredientCtrl.ingr_detail_get)
+router.get("/ingredient/details", ingredientCtrl.ingr_details_get)
 
 router.get("/ingredient/edit", ingredientCtrl.ingr_edit_get)
 router.put("/ingredient/update", ingredientCtrl.ingr_update_put)

@@ -8,7 +8,7 @@ exports.ingr_index_get = (req, res) => {
     res.json({"message": "ingr_index_get is working"})
 }
 
-exports.ingr_detail_get = (req, res) => {
+exports.ingr_details_get = (req, res) => {
     res.json({"message": "ingr_detail_get is working"})
 }
 
