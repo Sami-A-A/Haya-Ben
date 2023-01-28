@@ -1,4 +1,4 @@
-const Order = require('../models/order')
+const Order = require('../models/Order')
 
 exports.order_create_post = (req, res) => {
     res.json({"message": "order_create_post works"})

@@ -16,7 +16,7 @@ const itemCtrl = require('../controllers/item')
 // router.get("/custom_bento/add", itemCtrl.bento_create_get);
 
 router.post("/item/add", itemCtrl.item_create_post);
-router.post("/custom_bento/add", itemCtrl.bento_create_post);
+// router.post("/custom_bento/add", itemCtrl.bento_create_post);
 
 
 router.get("/menu", itemCtrl.item_index_get);
