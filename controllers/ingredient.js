@@ -20,6 +20,6 @@ exports.ingr_update_put = (req, res) => {
     res.json({"message": "ingr_update_put is working"})
 }
 
-exports.ingr_delete_get = (req, res) => {
+exports.ingr_drop_delete = (req, res) => {
     res.json({"message": "ingr_delete_get is working"})
 }

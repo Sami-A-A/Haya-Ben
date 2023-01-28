@@ -33,7 +33,7 @@ exports.item_update_put = (req,res) => {
 }
 
 
-exports.item_delete_get = (req,res) => {
+exports.item_drop_delete = (req,res) => {
     res.json({"message": "item_create_get works"})
 }
 

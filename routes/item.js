@@ -25,6 +25,6 @@ router.get("/menu/item_details", itemCtrl.item_details_get);
 router.get("/menu/edit", itemCtrl.item_edit_get);
 router.put("/menu/create", itemCtrl.item_update_put);
 
-router.delete("/item/delete", itemCtrl.item_delete_get);
+router.delete("/item/delete", itemCtrl.item_drop_delete);
 
 module.exports = router

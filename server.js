@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-let session = require('express-session');
+let session = require('express-session')
 
 // env
 require ("dotenv").config()
@@ -30,14 +30,14 @@ app.use(session({
 
 // Import Routes
 const authRoute = require('./routes/auth');
-// const userRoute = require('./routes/user')
+const userRoute = require('./routes/user')
 const orderRoute = require('./routes/order');
 const itemRoute = require('./routes/item');
 const ingredientRoute = require('./routes/ingredient');
 
 // Mounting Routes
 app.use('/', authRoute);
-//const userRoute = require('./routes/user')
+app.use('/', userRoute)
 app.use('/', orderRoute);
 app.use('/', itemRoute);
 app.use('/', ingredientRoute)
