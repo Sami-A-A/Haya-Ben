@@ -1,4 +1,7 @@
-const router = require('express').Router()
+const express = require('express')
+const router = express.Router()
+
+router.use(express.json());
 
 let methodOverride = require("method-override")
 router.use(methodOverride('_method'))
