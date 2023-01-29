@@ -1,25 +1,63 @@
 const Ingredient = require('../models/Ingredient')
 
+// HTTP POST - Create Ingredient
 exports.ingr_create_post = (req, res) => {
-    res.json({"message": "ingr_create_post is working"})
+    let ingr = new Ingredient(req.body)
+
+    ingr.save()
+    .then(ingr => {
+        res.json({ingr})
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Create Ingredient')
+    })
 }
 
+// HTTP GET -  Ingredient Index
 exports.ingr_index_get = (req, res) => {
-    res.json({"message": "ingr_index_get is working"})
+    Ingredient.find()
+    .then(ingr => {
+        res.json({ingredients: ingr});
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Get Ingredient Index')
+    })
 }
 
-exports.ingr_details_get = (req, res) => {
-    res.json({"message": "ingr_detail_get is working"})
-}
-
+// HTTP GET - Ingredient Edit
 exports.ingr_edit_get = (req,res) => {
-    res.json({"message": "ingr_edit_get is working"})
+    Ingredient.findById(req.body._id)
+    .then(ingr => {
+        res.json({ingr})
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Get Ingredient Edit')
+    })
 }
 
+// HTTP PUT - Ingredient Update
 exports.ingr_update_put = (req, res) => {
-    res.json({"message": "ingr_update_put is working"})
+    Ingredient.findByIdAndUpdate(req.body._id, req.body, {new: true})
+    .then(ingr => {
+        res.json({ingr})
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Update Ingredient')
+    })
 }
 
+// HTTP DELETE - Ingredient Delete
 exports.ingr_drop_delete = (req, res) => {
-    res.json({"message": "ingr_delete_get is working"})
+    Ingredient.findByIdAndDelete(req.body._id)
+    .then(ingr => {
+        res.json({ingr})
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Delete Ingredient')
+    })
 }

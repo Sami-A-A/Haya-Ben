@@ -5,7 +5,7 @@ const ingredientSchema = mongoose.Schema({
     category: String,
     price: Number,
     description: String,
-    bento: [{
+    item: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
     }],
