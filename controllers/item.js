@@ -10,9 +10,10 @@ const Order = require('../models/Order')
 
 exports.item_create_post = (req,res) => {
     let item = new Item(req.body)
+    console.log(item)
     item.save()
-    .then((item)=>{
-        res.json({item})
+    .then((items)=>{
+        res.json({items})
     })
     .catch((err) => {
         console.log(err)

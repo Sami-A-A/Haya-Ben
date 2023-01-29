@@ -45,13 +45,15 @@ app.use('/', ingredientRoute)
 
 // Database
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.mongoDBURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true},
-    () => {
-        console.log("MongoDB Connected Successfully")
-    }
-)
+mongoose.connect(
+    process.env.mongoDBURL, 
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log(`MongoDB Connected Successfully`))
+    .catch(err=>console.log(err))
+
 
 // Render Home
 app.get('/', function(req,res){
@@ -60,6 +62,6 @@ app.get('/', function(req,res){
 
 
 // Port
-app.listen(process.env.PORT || 5000, ()=> {
+app.listen(port || 5000, ()=> {
     console.log(`Running on Port ${port}`)
 } )

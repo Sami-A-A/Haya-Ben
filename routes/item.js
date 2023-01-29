@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 router.use(express.urlencoded({ extended: true }))
+router.use(express.json());
 
 // const isLoggedIn = require("../helper/isLoggedIn")
 
@@ -16,7 +17,7 @@ const itemCtrl = require('../controllers/item')
 // router.get("/custom_bento/add", itemCtrl.bento_create_get);
 
 router.post("/item/add", itemCtrl.item_create_post);
-// router.post("/custom_bento/add", itemCtrl.bento_create_post);
+router.post("/bento/add", itemCtrl.bento_create_post);
 
 
 router.get("/menu", itemCtrl.item_index_get);
