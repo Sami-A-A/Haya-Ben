@@ -15,13 +15,14 @@ const salt = 10;
 // }
 
 exports.auth_signup_post = (req,res) => {
+    console.log(req.body)
     let user = new User(req.body)
     let hash = bcrypt.hashSync(req.body.password, salt)
     user.password = hash
 
     user.save()
     .then(() => {
-        res.redirect("/auth/signin")
+        res.json({"message":"User created successfully"})
     })
     .catch((err) => {
         console.log(err)
@@ -73,6 +74,6 @@ exports.auth_logout_get = (req,res) => {
         if (err) {
             return next(err)
         }
-        res.redirect("/auth/signin")
+        res.json({"message":"logout successful"})
     })
 }
