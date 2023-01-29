@@ -2,12 +2,13 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 let session = require('express-session')
+let passport = require('./helper/ppConfig');
 
 // env
 require ("dotenv").config()
 const port = process.env.PORT
 
-// Session
+// Passport and Session
 app.use(session({
     secret: process.env.SECRET,
     saveUninitialized: true,
@@ -15,17 +16,17 @@ app.use(session({
     cookie: {maxAge: 1209600}
 }))
 
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Initialize
+// Current User
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user
+    next()
+})
 
-// app.use(express.static("public"))
-// app.use(expressLayouts)
-// app.use(passport.initialize())
-// app.use(function(req, res, next){
-//     res.locals.currentUser = req.user
-//     next()
-// })
-
+// Public
+app.use(express.static("public"))
 
 
 // Import Routes

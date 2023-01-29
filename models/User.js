@@ -36,25 +36,9 @@ const userSchema = mongoose.Schema({
         require: true,
         unique: true
     },
-    address: [{
-        addressName: {
-            type: String,
-            require: true,
-            minlength: 2,
-            maxlength: 30
-        },
-        flat: Number,
-        road: Number,
-        building: Number,
-        area: {
-            type: String,
-            require: true,
-            maxlength: 30
-        },
-        additionalDetails: {
-            type: String,
-            maxlength: 200
-        },
+    addresses: [{
+       type: mongoose.Schema.Types.ObjectId,
+       ref: 'Address'
     }],
     orderHistory: [{
         type: mongoose.Schema.Types.ObjectId,

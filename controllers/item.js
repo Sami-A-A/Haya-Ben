@@ -8,9 +8,9 @@ const Order = require('../models/Order')
 //     res.json({"message": "item_create_get works"})
 // }
 
+// Admin
 exports.item_create_post = (req,res) => {
     let item = new Item(req.body)
-    console.log(item)
     item.save()
     .then((items)=>{
         res.json({items})
@@ -21,12 +21,12 @@ exports.item_create_post = (req,res) => {
     })
 }
 
-// Might not use
+// Normal User
 exports.bento_create_post = (req,res) => {
     let item = new Item(req.body)
     item.save()
-    .then((item)=>{
-        res.json({item})
+    .then((bento)=>{
+        res.json({bento})
     })
     .catch((err) => {
         console.log(err)
@@ -34,6 +34,7 @@ exports.bento_create_post = (req,res) => {
     })
 }
 
+// Admin and Normal Users
 exports.item_index_get = (req,res) => {
     Item.find().populate('order')
     .then(items => {
@@ -46,15 +47,18 @@ exports.item_index_get = (req,res) => {
 }
 
 
-// Might not use
+// Admin and Normal Users
 exports.item_details_get = (req,res) => {
     Item.findById(req.query.id).populate('order')
     .then(item => {
         res.json({item})
     })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
-
+// Admin
 exports.item_edit_get = (req,res) => {
     Item.findById(req.query.id)
     .then(item => {
@@ -66,6 +70,7 @@ exports.item_edit_get = (req,res) => {
     })
 }
 
+// Admin
 exports.item_update_put = (req,res) => {
     Item.findByIdAndUpdate(req.body._id, req.body, {new: true})
     .then((item) => {
@@ -78,10 +83,12 @@ exports.item_update_put = (req,res) => {
     
 }
 
+
+// Admin
 exports.item_drop_delete = (req,res) => {
-    Item.findByIdAndDelete(req.query.id)
+    Item.findByIdAndDelete(req.body._id)
     .then((item) => {
-        res.json({"message": "item_create_get works"})
+        res.json({item})
     })
     .catch(err => {
         console.log(err)
