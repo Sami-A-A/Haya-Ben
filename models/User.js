@@ -37,8 +37,8 @@ const userSchema = mongoose.Schema({
         unique: true
     },
     addresses: [{
-       type: mongoose.Schema.Types.ObjectId,
-       ref: 'Address'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Address'
     }],
     orderHistory: [{
         type: mongoose.Schema.Types.ObjectId,
