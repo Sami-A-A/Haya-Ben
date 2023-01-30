@@ -15,14 +15,38 @@ const User = require("../models/User")
 // }
 
 // HTTP GET - User Details
-exports.user_details_get = (req,res) => {
-    User.findById(req.body._id)
+exports.user_create_post = (req,res) => {
+    let user = new User(req.body)
+    user.save()
     .then(user => {
         res.json({user})
     })
     .catch(err => {
         console.log(err)
+        console.log('Cannot Create User')
+    })
+}
+
+exports.user_details_get = (req,res) => {
+    User.findById(req.params.id)
+    .then(user => {
+        console.log(user)
+        res.json({user})
+    })
+    .catch(err => {
+        console.log(err)
         console.log('Cannot Get User Details')
+    })
+}
+
+exports.user_index_get = (req,res) => {
+    User.find()
+    .then((users)=>{
+        res.json({users})
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Could not get all users')
     })
 }
 
