@@ -22,7 +22,7 @@ exports.auth_signup_post = (req,res) => {
 
     user.save()
     .then(() => {
-        res.json({"message":"User created successfully"})
+        res.json({"message": "User Created Succesfully"})
     })
     .catch((err) => {
         console.log(err)

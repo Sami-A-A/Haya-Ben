@@ -16,15 +16,15 @@ const itemCtrl = require('../controllers/item')
 // router.get("/item/add", itemCtrl.item_create_get);
 // router.get("/custom_bento/add", itemCtrl.bento_create_get);
 
-router.post("/item/add", itemCtrl.item_create_post);
-router.post("/bento/add", itemCtrl.bento_create_post);
+router.post("/item/create", itemCtrl.item_create_post);
+router.post("/bento/create", itemCtrl.bento_create_post);
 
 
 router.get("/menu", itemCtrl.item_index_get);
-router.get("/menu/item_details", itemCtrl.item_details_get);
+router.get("/item/details", itemCtrl.item_details_get);
 
 router.get("/menu/edit", itemCtrl.item_edit_get);
-router.put("/menu/create", itemCtrl.item_update_put);
+router.put("/menu/update", itemCtrl.item_update_put);
 
 router.delete("/item/delete", itemCtrl.item_drop_delete);
 
