@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    category: String,
+    role: {
+        type:String,
+        default: "Basic"
+    },
     firstName: {
         type: String,
         require: true,

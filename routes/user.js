@@ -12,9 +12,10 @@ const userCtrl = require('../controllers/user')
 
 router.post("/user/create", userCtrl.user_create_post)
 
-router.get("/user/details/:id", userCtrl.user_details_get)
+router.get("/user/details/", userCtrl.user_details_get)
 router.get("/user/index", userCtrl.user_index_get)
 
+router.get("/user/edit", userCtrl.user_edit_get)
 router.put("/user/update", userCtrl.user_update_put)
 
 router.delete("/user/delete", userCtrl.user_drop_delete)

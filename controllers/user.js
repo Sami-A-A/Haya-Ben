@@ -1,4 +1,7 @@
 const User = require("../models/User")
+const Address = require("../models/Address")
+const Order = require("../models/Order")
+const { findById } = require("../models/User")
 
 // // TEMP HTTP POST - User Create
 // exports.user_create_post = (req, res) => {
@@ -28,7 +31,12 @@ exports.user_create_post = (req,res) => {
 }
 
 exports.user_details_get = (req,res) => {
-    User.findById(req.params.id)
+    console.log(req.query.id)
+    User.findById(req.query.id).populate('addresses').populate('orderHistory')
+    // .exec((err, results) => {
+    //     console.log(err)
+    //     console.log(results)
+    // })
     .then(user => {
         console.log(user)
         res.json({user})
@@ -49,6 +57,19 @@ exports.user_index_get = (req,res) => {
         console.log('Could not get all users')
     })
 }
+// HTTP GET - User Edit
+exports.user_edit_get = (req,res) => {
+    User.findById(req.query.id).populate('orderHistory')
+    .then(user => {
+        console.log(user)
+        res.json({user})
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Get User Details')
+    })
+}
+
 
 // HTTP PUT - User Update
 exports.user_update_put = (req,res) => {
@@ -61,6 +82,7 @@ exports.user_update_put = (req,res) => {
         console.log('Cannot Update User')
     })
 }
+
 
 // HTTP DELETE - User Delete
 exports.user_drop_delete = (req,res) => {
