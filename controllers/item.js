@@ -55,6 +55,7 @@ exports.item_details_get = (req,res) => {
     })
     .catch(err => {
         console.log(err)
+        res.send("Error loading item details. Please try again later.")
     })
 }
 
