@@ -17,8 +17,8 @@ exports.ingr_create_post = (req, res) => {
 // HTTP GET -  Ingredient Index
 exports.ingr_index_get = (req, res) => {
     Ingredient.find()
-    .then(ingr => {
-        res.json({ingredients: ingr});
+    .then(ingredients => {
+        res.json({ingredients: ingredients});
     })
     .catch(err => {
         console.log(err)

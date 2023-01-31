@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 const orderSchema = mongoose.Schema({
-    status: String,
+    status: {
+        type: String,
+        default: 'Pending'
+    },
     item: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'

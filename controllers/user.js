@@ -17,7 +17,7 @@ const { findById } = require("../models/User")
 //     })
 // }
 
-// HTTP GET - User Details
+// HTTP GET - User Create
 exports.user_create_post = (req,res) => {
     let user = new User(req.body)
     user.save()
@@ -30,6 +30,7 @@ exports.user_create_post = (req,res) => {
     })
 }
 
+// HTTP GET - User Details
 exports.user_details_get = (req,res) => {
     console.log(req.query.id)
     User.findById(req.query.id).populate('addresses').populate('orderHistory')
@@ -86,7 +87,7 @@ exports.user_update_put = (req,res) => {
 
 // HTTP DELETE - User Delete
 exports.user_drop_delete = (req,res) => {
-    User.findByIdAndDelete(req.body._id)
+    User.findByIdAndDelete(req.query.id)
     .then(user => {
         res.json({user})
     })

@@ -1,13 +1,6 @@
 const Item = require('../models/Item')
 const Order = require('../models/Order')
 
-// exports.item_create_get = (req,res) => {
-//     res.json({"message": "item_create_get works"})
-// }
-// exports.bento_create_get = (req,res) => {
-//     res.json({"message": "item_create_get works"})
-// }
-
 // Admin
 exports.item_create_post = (req,res) => {
     let item = new Item(req.body)
@@ -87,7 +80,7 @@ exports.item_update_put = (req,res) => {
 
 // Admin
 exports.item_drop_delete = (req,res) => {
-    Item.findByIdAndDelete(req.body._id)
+    Item.findByIdAndDelete(req.query.id)
     .then((item) => {
         res.json({item})
     })
