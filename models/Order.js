@@ -5,7 +5,7 @@ const orderSchema = mongoose.Schema({
         type: String,
         default: 'Pending'
     },
-    item: [{
+    items: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
     }],

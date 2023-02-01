@@ -10,9 +10,7 @@ const userCtrl = require('../controllers/user')
 
 // TEMP USER CREATE/POST
 
-router.post("/user/create", userCtrl.user_create_post)
-
-router.get("/user/details/", userCtrl.user_details_get)
+router.get("/user/details", userCtrl.user_details_get)
 router.get("/user/index", userCtrl.user_index_get)
 
 router.get("/user/edit", userCtrl.user_edit_get)

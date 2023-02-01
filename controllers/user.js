@@ -17,19 +17,6 @@ const { findById } = require("../models/User")
 //     })
 // }
 
-// HTTP GET - User Create
-exports.user_create_post = (req,res) => {
-    let user = new User(req.body)
-    user.save()
-    .then(user => {
-        res.json({user})
-    })
-    .catch(err => {
-        console.log(err)
-        console.log('Cannot Create User')
-    })
-}
-
 // HTTP GET - User Details
 exports.user_details_get = (req,res) => {
     console.log(req.query.id)

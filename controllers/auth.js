@@ -10,9 +10,6 @@ let passport = require("../helper/ppConfig");
 const bcrypt = require("bcrypt");
 const salt = 10;
 
-// exports.auth_signup_get = (req,res) => {
-//     res.json({"message":"auth_signup_get works"})
-// }
 
 exports.auth_signup_post = (req,res) => {
     console.log(req.body)
@@ -30,9 +27,6 @@ exports.auth_signup_post = (req,res) => {
     })
 }
 
-// exports.auth_signin_get = (req, res) => {
-//     res.json({"message":"auth_signin_get works"})
-// }
 
 exports.auth_signin_post = async (req,res) => {
     let { emailAddress, password } = req.body

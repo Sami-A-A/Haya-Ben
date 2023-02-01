@@ -1,4 +1,6 @@
 const Order = require('../models/Order')
+const Item = require('../models/Item')
+const moment = require('moment')
 
 // HTTP GET - Order Create
 exports.order_create_post = (req, res) => {
@@ -18,9 +20,9 @@ exports.order_create_post = (req, res) => {
 
 // HTTP GET - Order Index (History)
 exports.order_index_get = (req,res) => {
-    Order.find()
-    .then(order => {
-        res.json({orders: order})
+    Order.find().populate('items').populate('user')
+    .then(orders => {
+        res.json({orders, moment})
     })
     .catch(err => {
         console.log(err)
@@ -30,9 +32,9 @@ exports.order_index_get = (req,res) => {
 
 // HTTP GET - Order Details
 exports.order_details_get = (req,res) => {
-    Order.findById(req.body._id)
+    Order.findById(req.query.id).populate('items').populate('user')
     .then(order => {
-        res.json({order})
+        res.json({order, moment})
     })
     .catch(err => {
         console.log(err)
@@ -42,7 +44,7 @@ exports.order_details_get = (req,res) => {
 
 // HTTP GET - Order Edit
 exports.order_edit_get = (req,res) => {
-    Order.findById(req.body._id)
+    Order.findById(req.query.id).populate('items')
     .then(order => {
         res.json({order})
     })
@@ -57,7 +59,6 @@ exports.order_update_put = (req,res) => {
     Order.findByIdAndUpdate(req.body._id, req.body, {new: true})
     .then(order => {
         res.json({order})
-        console.log('Cannot Update Order')
     })
     .catch(err => {
         console.log(err)

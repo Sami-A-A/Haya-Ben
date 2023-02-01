@@ -18,7 +18,7 @@ exports.ingr_create_post = (req, res) => {
 exports.ingr_index_get = (req, res) => {
     Ingredient.find()
     .then(ingredients => {
-        res.json({ingredients: ingredients});
+        res.json({ingredients});
     })
     .catch(err => {
         console.log(err)
@@ -26,11 +26,23 @@ exports.ingr_index_get = (req, res) => {
     })
 }
 
+// HTTP GET -  Ingredient Index
+exports.ingr_details_get = (req, res) => {
+    Ingredient.findById(req.query.id)
+    .then(ingredient => {
+        res.json({ingredient});
+    })
+    .catch(err => {
+        console.log(err)
+        console.log('Cannot Get Ingredient Details')
+    })
+}
+
 // HTTP GET - Ingredient Edit
 exports.ingr_edit_get = (req,res) => {
-    Ingredient.findById(req.body._id)
-    .then(ingr => {
-        res.json({ingr})
+    Ingredient.findById(req.query.id)
+    .then(ingredient => {
+        res.json({ingredient})
     })
     .catch(err => {
         console.log(err)
@@ -52,7 +64,7 @@ exports.ingr_update_put = (req, res) => {
 
 // HTTP DELETE - Ingredient Delete
 exports.ingr_drop_delete = (req, res) => {
-    Ingredient.findByIdAndDelete(req.body._id)
+    Ingredient.findByIdAndDelete(req.query.id)
     .then(ingr => {
         res.json({ingr})
     })
